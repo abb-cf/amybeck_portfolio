@@ -1,27 +1,31 @@
-import React from 'react';
-import { useCollapse } from 'react-collapsed';
+// App.js
+import React, { useState } from 'react';
 import './App.css';
-
-function Collapsible() {
-    const { getCollapseProps, getToggleProps, isExpanded } = useCollapse();
-return (
-    <div className="collapsible">
-        <div className="header" {...getToggleProps()}>
-            {isExpanded ? 'Collapse' : 'Expand'}
-        </div>
-        <div {...getCollapseProps()}>
-            <div className="content">
-                Now you can see the hidden content. <br/><br/>
-                Click again to hide...
-            </div>
-        </div>
-    </div>
-    );
-}
+import About from './components/About';
 
 function App() {
+    const [isOpen, setIsOpen] = useState(false);
+
+    const toggleOverlay = () => {
+        setIsOpen(!isOpen);
+    };
+
     return (
-    <Collapsible/>
+        <div className="aboutSection">
+            <div className="container">
+                <button
+                    className="aboutButton"
+                    onClick={toggleOverlay}
+                >
+                    About
+                </button>
+            </div>
+            <About
+                isOpen={isOpen}
+                onClose={toggleOverlay}
+            >
+            </About>
+        </div>
     );
 }
 
