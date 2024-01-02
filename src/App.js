@@ -11,7 +11,8 @@ function App() {
     };
 
     return (
-        <div className="aboutSection">
+        <div>
+            <div className="aboutSection">
             <div className="container">
                 <button
                     className="aboutButton"
@@ -25,6 +26,22 @@ function App() {
                 onClose={toggleOverlay}
             >
             </About>
+        </div>
+        <div className="aboutSection">
+        <div className="container">
+            <button
+                className="aboutButton"
+                onClick={toggleOverlay}
+            >
+                About
+            </button>
+        </div>
+        <About
+            isOpen={isOpen}
+            onClose={toggleOverlay}
+        >
+        </About>
+    </div>
         </div>
     );
 }
